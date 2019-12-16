@@ -6,7 +6,7 @@ const dumpGAuth = () => {
     let impl = classObject["- initWithName:secret:issuer:algorithm:digits:query:"].implementation;
     Interceptor.attach(impl, {
         onEnter: (a) => {
-            this.secret = new ObjC.Object(a[2 + 1]);
+            this.secret = new ObjC.Object(a[3]);
             this.b32secret = ObjC.classes["OTPAuthURL"]["+ encodeBase32:"](this.secret);
         },
 
