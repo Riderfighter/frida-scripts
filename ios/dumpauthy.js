@@ -31,10 +31,10 @@ if (ObjC.available) {
 	for (let i = 0; i < authyToken.length; i++) {
 		let token = authyToken[i];
 		if (token.$className === "AuthyToken") {
-			send(`otpauth://totp/${token["- name"]()}:${token["- name"]()}?secret=${hex_to_b32(token["- tokenData"]()["- secretKeyWithError:callStack:"](ptr("0x0"), ptr("0x0")).toString())}&issuer=${token["- originalIssuer"]()}&digits=7`);
+			send(`otpauth://totp/${token["- name"]()}:${token["- name"]()}?secret=${hex_to_b32(token["- tokenData"]()["- secretKeyWithError:callStack:"](ptr("0x0"), ptr("0x0")).toString())}&issuer=${token["- originalIssuer"]()}&digits=7&period=10`);
 		}
 		if (token.$className === "GoogleAuthToken") {
-			send(`otpauth://totp/${token["- accountName"]()}:${token["- originalName"]()}?secret=${hex_to_b32(token["- cachedSecretKey"]())}&issuer=${token["- originalIssuer"]()}&digits=${token["- digits"]()}`)
+			send(`otpauth://totp/${token["- accountName"]()}:${token["- originalName"]()}?secret=${hex_to_b32(token["- cachedSecretKey"]())}&issuer=${token["- originalIssuer"]()}&digits=${token["- digits"]()}&period=30`)
 		}
 	}
 }
